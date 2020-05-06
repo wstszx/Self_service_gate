@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.StaffSelectionFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/blue_1"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title_gate"
+                style="@style/text"
+                android:layout_marginStart="26dp"
+                android:text="@string/gate"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_gate"
+                style="@style/text"
+                android:layout_marginStart="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_title_gate"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="T1-01" />
+
+            <TextView
+                android:id="@+id/tv_title_aisle"
+                style="@style/text"
+                android:layout_marginStart="44dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_gate"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="T1-01" />
+
+            <TextView
+                android:id="@+id/tv_aisle"
+                style="@style/text"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="26dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_title_aisle"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="T1-01" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="56dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintTop_toBottomOf="@id/constraint"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/iv_level"
+            android:layout_width="82dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+            tools:src="@mipmap/captain" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/text1"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintTop_toBottomOf="@id/iv_level"
+            tools:text="工作人员" />
+
+        <TextView
+            android:id="@+id/tv_level"
+            style="@style/text2"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="工作人员" />
+
+
+        <TextView
+            android:id="@+id/tv_title_team_member"
+            style="@style/text3"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/team_member"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_level" />
+
+        <TextView
+            android:id="@+id/tv_team_member"
+            style="@style/text4"
+            android:layout_marginStart="8dp"
+            android:text="@string/team_member"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_title_team_member"
+            app:layout_constraintStart_toEndOf="@id/tv_title_team_member" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="58dp"
+            android:background="@color/white_2"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_team_member"
+            app:layout_constraintStart_toEndOf="@id/tv_title_team_member"
+            app:layout_constraintTop_toTopOf="@id/tv_title_team_member" />
+
+        <TextView
+            android:id="@+id/tv_title_post"
+            style="@style/text3"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/team_member"
+            app:layout_constraintStart_toEndOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@id/tv_level" />
+
+        <TextView
+            android:id="@+id/tv_post"
+            style="@style/text4"
+            android:layout_marginStart="8dp"
+            android:text="@string/post"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_title_post"
+            app:layout_constraintStart_toEndOf="@id/tv_title_post" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="174dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/white_2"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+        <TextView
+            android:id="@+id/tv_title_candidate"
+            style="@style/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/candidate"
+            app:layout_constraintStart_toStartOf="@id/tv_title_team_member"
+            app:layout_constraintTop_toBottomOf="@id/view1" />
+
+        <TextView
+            android:id="@+id/tv_candidate"
+            style="@style/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="106dp"
+            android:text="@string/post"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_title_candidate"
+            app:layout_constraintStart_toEndOf="@id/tv_title_candidate" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="174dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white_2"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_candidate" />
+
+        <TextView
+            android:id="@+id/tv_title_linedup"
+            style="@style/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/linedup"
+            app:layout_constraintStart_toStartOf="@id/tv_title_team_member"
+            app:layout_constraintTop_toBottomOf="@id/view2" />
+
+        <TextView
+            android:id="@+id/tv_linedup"
+            style="@style/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="106dp"
+            android:text="@string/post"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_title_linedup"
+            app:layout_constraintStart_toEndOf="@id/tv_title_linedup" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="174dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp"
+            android:background="@color/white_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_linedup" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="3dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@color/white_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/constraint"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="14dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="5"
+            tools:itemCount="16"
+            tools:listitem="@layout/item_jobs" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_title_candidate_1"
+        style="@style/text1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/candidate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint1" />
+
+    <ImageView
+        android:id="@+id/iv_left"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="28dp"
+        android:src="@mipmap/left"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerview1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/recyclerview1" />
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginEnd="28dp"
+        android:src="@mipmap/right"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerview1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/recyclerview1" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toStartOf="@id/iv_right"
+        app:layout_constraintStart_toEndOf="@id/iv_left"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_candidate_1"
+        tools:listitem="@layout/item_jobs" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_adjustment_staff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="@dimen/dp_10"
+            android:text="@string/adjustment_staff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_confirm_to_work"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_confirm_to_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="@dimen/dp_10"
+            android:text="@string/confirm_to_work"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_confirm_laid_off"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_adjustment_staff"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_confirm_laid_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="@dimen/dp_10"
+            android:text="@string/confirm_laid_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_confirm_to_work"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

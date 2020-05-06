@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.self_service_gate.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_faceRecognitionFragment"
+            app:destination="@id/faceRecognitionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faceRecognitionFragment"
+        android:name="com.example.self_service_gate.ui.FaceRecognitionFragment"
+        android:label="fragment_face_recognition"
+        tools:layout="@layout/fragment_face_recognition" >
+        <action
+            android:id="@+id/action_faceRecognitionFragment_to_jobSchedulingFragment"
+            app:destination="@id/jobSchedulingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobSchedulingFragment"
+        android:name="com.example.self_service_gate.ui.JobSchedulingFragment"
+        android:label="fragment_job_scheduling"
+        tools:layout="@layout/fragment_job_scheduling" />
+</navigation>
