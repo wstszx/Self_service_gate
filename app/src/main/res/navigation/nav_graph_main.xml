@@ -20,10 +20,18 @@
         <action
             android:id="@+id/action_faceRecognitionFragment_to_jobSchedulingFragment"
             app:destination="@id/jobSchedulingFragment" />
+        <action
+            android:id="@+id/action_faceRecognitionFragment_to_passengerSecondVerificationFragment"
+            app:destination="@id/passengerSecondVerificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobSchedulingFragment"
         android:name="com.example.self_service_gate.ui.JobSchedulingFragment"
         android:label="fragment_job_scheduling"
         tools:layout="@layout/fragment_job_scheduling" />
+    <fragment
+        android:id="@+id/passengerSecondVerificationFragment"
+        android:name="com.example.self_service_gate.PassengerSecondVerificationFragment"
+        android:label="fragment_passenger_second_verification"
+        tools:layout="@layout/fragment_passenger_second_verification" />
 </navigation>

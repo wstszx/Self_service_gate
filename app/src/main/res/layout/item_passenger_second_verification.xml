@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_second_verification_bg"
+        android:paddingVertical="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="60dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+        <TextView
+            android:id="@+id/tv_title_1"
+            style="@style/text6"
+            android:layout_marginTop="4dp"
+            android:text="@string/flight_no"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+
+        <TextView
+            android:id="@+id/tv_1"
+            style="@style/text6"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+            tools:text="航班号：" />
+
+        <TextView
+            android:id="@+id/tv_title_2"
+            style="@style/text7"
+            android:layout_marginTop="4dp"
+            android:text="@string/passenger_name"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_1" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            style="@style/text3"
+            android:layout_marginTop="4dp"
+            android:text="@string/passenger_name"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_1" />
+
+        <TextView
+            android:id="@+id/tv_title_3"
+            style="@style/text7"
+            android:layout_marginTop="4dp"
+            android:text="@string/nation"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_2" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            style="@style/text3"
+            android:layout_marginTop="4dp"
+            android:text="@string/nation"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_boarding_time_bg"
+        android:gravity="center"
+        android:paddingVertical="6dp"
+        android:text="登机时间：09：00AM"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint" />
+</androidx.constraintlayout.widget.ConstraintLayout>

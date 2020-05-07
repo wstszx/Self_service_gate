@@ -28,4 +28,7 @@
     <string name="adjustment_staff">调整人员</string>
     <string name="confirm_to_work">确认上岗</string>
     <string name="confirm_laid_off">确认下岗</string>
+    <string name="flight_no">航班号：</string>
+    <string name="passenger_name">旅客姓名：</string>
+    <string name="nation">民族：</string>
 </resources>
