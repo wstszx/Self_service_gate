@@ -9,18 +9,211 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="14dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="5"
         tools:itemCount="10"
         tools:listitem="@layout/item_passenger_second_verification" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView14"
+            style="@style/text3"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="260dp"
+            android:drawableStart="@drawable/shape_red"
+            android:drawablePadding="6dp"
+            android:text="@string/Verification_failed_passenger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@drawable/shape_black"
+            android:drawablePadding="6dp"
+            android:text="@string/Blacklist_travelers"
+            app:layout_constraintEnd_toStartOf="@+id/textView14"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView12"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@drawable/shape_yellow"
+            android:drawablePadding="6dp"
+            android:text="@string/Priority_passengers"
+            app:layout_constraintEnd_toStartOf="@+id/textView13"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@drawable/shape_purple"
+            android:drawablePadding="6dp"
+            android:text="@string/Late_travelers"
+            app:layout_constraintEnd_toStartOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@drawable/shape_blue"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:text="@string/Whitelist_travelers"
+            app:layout_constraintEnd_toStartOf="@+id/textView11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@drawable/shape_green"
+            android:drawablePadding="6dp"
+            android:text="验证成功"
+            app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_gate"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:drawablePadding="6dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_aisle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView10"
+            tools:text="xxx闸机" />
+
+        <TextView
+            android:id="@+id/tv_aisle"
+            style="@style/text1"
+            android:layout_marginTop="14dp"
+            android:drawablePadding="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_gate"
+            app:layout_constraintTop_toBottomOf="@id/textView10"
+            tools:text="xxx通道" />
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="闸机验证人数："
+            app:layout_constraintEnd_toStartOf="@+id/tv_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_gate" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="二次验证成功人数："
+            app:layout_constraintEnd_toStartOf="@+id/tv_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_gate" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="二次验证失败人数："
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_gate" />
+
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="重点检查对象："
+            app:layout_constraintEnd_toStartOf="@+id/tv_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_1" />
+
+        <TextView
+            android:id="@+id/tv_5"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="白名单旅客人数："
+            app:layout_constraintEnd_toStartOf="@+id/tv_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_1" />
+
+        <TextView
+            android:id="@+id/tv_6"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/shape_gray"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="晚到旅客人数："
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

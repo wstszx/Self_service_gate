@@ -31,4 +31,9 @@
     <string name="flight_no">航班号：</string>
     <string name="passenger_name">旅客姓名：</string>
     <string name="nation">民族：</string>
+    <string name="Verification_failed_passenger">验证失败旅客</string>
+    <string name="Blacklist_travelers">黑名单旅客013</string>
+    <string name="Priority_passengers">重点旅客</string>
+    <string name="Late_travelers">晚到旅客</string>
+    <string name="Whitelist_travelers">白名单旅客</string>
 </resources>
