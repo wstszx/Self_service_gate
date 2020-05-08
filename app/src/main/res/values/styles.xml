@@ -66,4 +66,25 @@
         <item name="android:textSize">6sp</item>
     </style>
 
+    <style name="text8">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_2</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="text9">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/green_2</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="text10">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_1</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
 </resources>

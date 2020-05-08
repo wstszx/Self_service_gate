@@ -36,4 +36,7 @@
     <string name="Priority_passengers">重点旅客</string>
     <string name="Late_travelers">晚到旅客</string>
     <string name="Whitelist_travelers">白名单旅客</string>
+    <string name="check_update">检查更新</string>
+    <string name="user_agreement">用户协议</string>
+    <string name="log_off">退出登录</string>
 </resources>

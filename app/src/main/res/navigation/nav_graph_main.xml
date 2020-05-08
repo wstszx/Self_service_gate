@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_faceRecognitionFragment_to_passengerSecondVerificationFragment"
             app:destination="@id/passengerSecondVerificationFragment" />
+        <action
+            android:id="@+id/action_faceRecognitionFragment_to_mineFragment"
+            app:destination="@id/mineFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobSchedulingFragment"
@@ -34,4 +37,9 @@
         android:name="com.example.self_service_gate.PassengerSecondVerificationFragment"
         android:label="fragment_passenger_second_verification"
         tools:layout="@layout/fragment_passenger_second_verification" />
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.example.self_service_gate.MineFragment"
+        android:label="fragment_mine"
+        tools:layout="@layout/fragment_mine" />
 </navigation>
