@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MineFragment">
+    tools:context=".ui.MineFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint1"
@@ -14,7 +14,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint"
@@ -169,22 +168,35 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <FrameLayout
+        android:id="@+id/framelayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="10dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_marginBottom="@dimen/dp_10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/constraint1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:spanCount="2"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_edition" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/recyclerview"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginStart="30dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_marginEnd="44dp"-->
+    <!--        android:layout_marginBottom="10dp"-->
+    <!--        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/constraint1"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:spanCount="2"-->
+    <!--        tools:itemCount="2"-->
+    <!--        tools:listitem="@layout/item_edition" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

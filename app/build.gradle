@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     
     defaultConfig {
         applicationId "com.example.self_service_gate"
@@ -20,11 +21,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
-    def nav_version = "2.3.0-alpha05"
+    def nav_version = "2.3.0-alpha06"
     def room_version = "2.2.5"
     def glide_version = '4.11.0'
     def lifecycle_version = "2.2.0-alpha02"

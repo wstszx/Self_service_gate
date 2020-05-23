@@ -15,22 +15,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginStart="30px"
+            android:layout_marginTop="30px"
             android:background="@color/blue_1"
-            android:paddingTop="@dimen/dp_10"
-            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="24px"
+            android:paddingBottom="24px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_title_gate"
                 style="@style/text"
-                android:layout_marginStart="26dp"
+                android:layout_marginStart="80px"
                 android:text="@string/gate"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +40,7 @@
             <TextView
                 android:id="@+id/tv_gate"
                 style="@style/text"
-                android:layout_marginStart="6dp"
+                android:layout_marginStart="19px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_title_gate"
                 app:layout_constraintTop_toTopOf="parent"
@@ -48,17 +49,17 @@
             <TextView
                 android:id="@+id/tv_title_aisle"
                 style="@style/text"
-                android:layout_marginStart="44dp"
+                android:layout_marginStart="225px"
+                android:text="通道"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_gate"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="T1-01" />
+                app:layout_constraintStart_toEndOf="@+id/tv_title_gate"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_aisle"
                 style="@style/text"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="26dp"
+                android:layout_marginStart="19px"
+                android:layout_marginEnd="80px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_title_aisle"
@@ -67,30 +68,31 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <ImageView
             android:id="@+id/iv_avatar"
-            android:layout_width="56dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="160px"
+            android:layout_height="180px"
+            android:layout_marginTop="30px"
+            android:src="@drawable/personnel_select_defaut"
             app:layout_constraintEnd_toEndOf="@id/constraint"
             app:layout_constraintStart_toStartOf="@id/constraint"
-            app:layout_constraintTop_toBottomOf="@id/constraint"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toBottomOf="@id/constraint" />
 
         <ImageView
             android:id="@+id/iv_level"
-            android:layout_width="82dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="2dp"
+            android:layout_width="246px"
+            android:layout_height="44px"
+            android:layout_marginTop="1px"
             app:layout_constraintEnd_toEndOf="@id/constraint"
             app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toBottomOf="@id/iv_avatar"
-            tools:src="@mipmap/captain" />
+            tools:src="@drawable/captain" />
 
         <TextView
             android:id="@+id/tv_title_2"
             style="@style/text1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24px"
             app:layout_constraintEnd_toEndOf="@id/constraint"
             app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toBottomOf="@id/iv_level"
@@ -99,7 +101,7 @@
         <TextView
             android:id="@+id/tv_title_3"
             style="@style/text2"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="11px"
             app:layout_constraintEnd_toEndOf="@id/constraint"
             app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toBottomOf="@id/tv_title_2"
@@ -109,8 +111,8 @@
         <TextView
             android:id="@+id/tv_title_team_member"
             style="@style/text3"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="70px"
+            android:layout_marginTop="50px"
             android:text="@string/team_member"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title_3" />
@@ -118,26 +120,26 @@
         <TextView
             android:id="@+id/tv_team_member"
             style="@style/text4"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="22px"
             android:text="@string/team_member"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_team_member"
             app:layout_constraintStart_toEndOf="@id/tv_title_team_member" />
 
         <View
             android:id="@+id/view"
-            android:layout_width="1dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="58dp"
+            android:layout_width="2px"
+            android:layout_height="60px"
             android:background="@color/white_2"
             app:layout_constraintBottom_toBottomOf="@id/tv_title_team_member"
-            app:layout_constraintStart_toEndOf="@id/tv_title_team_member"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toTopOf="@id/tv_title_team_member" />
 
         <TextView
             android:id="@+id/tv_title_post"
             style="@style/text3"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="86px"
+            android:layout_marginTop="50px"
             android:text="@string/team_member"
             app:layout_constraintStart_toEndOf="@id/view"
             app:layout_constraintTop_toBottomOf="@id/tv_title_3" />
@@ -145,16 +147,16 @@
         <TextView
             android:id="@+id/tv_post"
             style="@style/text4"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="22px"
             android:text="@string/post"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_post"
             app:layout_constraintStart_toEndOf="@id/tv_title_post" />
 
         <View
             android:id="@+id/view1"
-            android:layout_width="174dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="520px"
+            android:layout_height="2px"
+            android:layout_marginTop="24px"
             android:background="@color/white_2"
             app:layout_constraintEnd_toEndOf="@id/view"
             app:layout_constraintStart_toStartOf="@id/view"
@@ -165,7 +167,7 @@
             style="@style/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="30px"
             android:text="@string/candidate"
             app:layout_constraintStart_toStartOf="@id/tv_title_team_member"
             app:layout_constraintTop_toBottomOf="@id/view1" />
@@ -175,16 +177,16 @@
             style="@style/text5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="106dp"
+            android:layout_marginStart="319px"
             android:text="@string/post"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_candidate"
             app:layout_constraintStart_toEndOf="@id/tv_title_candidate" />
 
         <View
             android:id="@+id/view2"
-            android:layout_width="174dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="520px"
+            android:layout_height="2px"
+            android:layout_marginTop="24px"
             android:background="@color/white_2"
             app:layout_constraintEnd_toEndOf="@id/view"
             app:layout_constraintStart_toStartOf="@id/view"
@@ -195,7 +197,7 @@
             style="@style/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="30px"
             android:text="@string/linedup"
             app:layout_constraintStart_toStartOf="@id/tv_title_team_member"
             app:layout_constraintTop_toBottomOf="@id/view2" />
@@ -205,17 +207,17 @@
             style="@style/text5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="106dp"
+            android:layout_marginStart="319px"
             android:text="@string/post"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_linedup"
             app:layout_constraintStart_toEndOf="@id/tv_title_linedup" />
 
         <View
             android:id="@+id/view3"
-            android:layout_width="174dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="28dp"
+            android:layout_width="520px"
+            android:layout_height="2px"
+            android:layout_marginTop="24px"
+            android:layout_marginBottom="40px"
             android:background="@color/white_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/view"
@@ -224,27 +226,23 @@
 
         <View
             android:id="@+id/view4"
-            android:layout_width="3dp"
+            android:layout_width="10px"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"
+            android:layout_marginStart="30px"
+            android:layout_marginTop="40px"
             android:background="@color/white_2"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/view3"
             app:layout_constraintStart_toEndOf="@id/constraint"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginBottom="14dp"
+            android:layout_marginStart="40px"
+            android:layout_marginTop="20px"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/view4"
             app:layout_constraintStart_toEndOf="@id/view4"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="5"
@@ -257,7 +255,7 @@
     <TextView
         android:id="@+id/tv_title_candidate_1"
         style="@style/text1"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="24px"
         android:text="@string/candidate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -265,43 +263,42 @@
 
     <ImageView
         android:id="@+id/iv_left"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginStart="28dp"
-        android:src="@mipmap/left"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginStart="82px"
+        android:src="@drawable/left"
         app:layout_constraintBottom_toBottomOf="@id/recyclerview1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/recyclerview1" />
 
     <ImageView
         android:id="@+id/iv_right"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginEnd="28dp"
-        android:src="@mipmap/right"
+        android:layout_width="120px"
+        android:layout_height="120px"
+        android:layout_marginEnd="82px"
+        android:src="@drawable/right"
         app:layout_constraintBottom_toBottomOf="@id/recyclerview1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/recyclerview1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="24px"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toStartOf="@id/iv_right"
         app:layout_constraintStart_toEndOf="@id/iv_left"
         app:layout_constraintTop_toBottomOf="@id/tv_title_candidate_1"
+        tools:itemCount="6"
         tools:listitem="@layout/item_jobs" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingVertical="5dp"
+        android:paddingVertical="12px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -310,9 +307,10 @@
             android:id="@+id/tv_adjustment_staff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="@dimen/dp_10"
+            android:paddingHorizontal="94px"
+            android:paddingVertical="24px"
             android:text="@string/adjustment_staff"
+            android:textSize="28px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_confirm_to_work"
             app:layout_constraintHorizontal_bias="0.5"
@@ -324,11 +322,12 @@
             android:id="@+id/tv_confirm_to_work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="@dimen/dp_10"
+            android:layout_marginStart="24px"
+            android:layout_marginEnd="24px"
+            android:paddingHorizontal="94px"
+            android:paddingVertical="24px"
             android:text="@string/confirm_to_work"
+            android:textSize="28px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_confirm_laid_off"
             app:layout_constraintHorizontal_bias="0.5"
@@ -339,9 +338,10 @@
             android:id="@+id/tv_confirm_laid_off"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="@dimen/dp_10"
+            android:paddingHorizontal="94px"
+            android:paddingVertical="24px"
             android:text="@string/confirm_laid_off"
+            android:textSize="28px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -350,4 +350,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

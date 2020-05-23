@@ -9,37 +9,16 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_faceRecognitionFragment"
-            app:destination="@id/faceRecognitionFragment" />
+            android:id="@+id/action_loginFragment_to_containerFragment3"
+            app:destination="@id/containerFragment" />
     </fragment>
     <fragment
         android:id="@+id/faceRecognitionFragment"
         android:name="com.example.self_service_gate.ui.FaceRecognitionFragment"
         android:label="fragment_face_recognition"
-        tools:layout="@layout/fragment_face_recognition" >
-        <action
-            android:id="@+id/action_faceRecognitionFragment_to_jobSchedulingFragment"
-            app:destination="@id/jobSchedulingFragment" />
-        <action
-            android:id="@+id/action_faceRecognitionFragment_to_passengerSecondVerificationFragment"
-            app:destination="@id/passengerSecondVerificationFragment" />
-        <action
-            android:id="@+id/action_faceRecognitionFragment_to_mineFragment"
-            app:destination="@id/mineFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_face_recognition" />
     <fragment
-        android:id="@+id/jobSchedulingFragment"
-        android:name="com.example.self_service_gate.ui.JobSchedulingFragment"
-        android:label="fragment_job_scheduling"
-        tools:layout="@layout/fragment_job_scheduling" />
-    <fragment
-        android:id="@+id/passengerSecondVerificationFragment"
-        android:name="com.example.self_service_gate.PassengerSecondVerificationFragment"
-        android:label="fragment_passenger_second_verification"
-        tools:layout="@layout/fragment_passenger_second_verification" />
-    <fragment
-        android:id="@+id/mineFragment"
-        android:name="com.example.self_service_gate.MineFragment"
-        android:label="fragment_mine"
-        tools:layout="@layout/fragment_mine" />
+        android:id="@+id/containerFragment"
+        android:name="com.example.self_service_gate.ui.ContainerFragment"
+        android:label="ContainerFragment" />
 </navigation>
