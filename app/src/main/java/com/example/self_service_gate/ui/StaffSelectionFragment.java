@@ -258,12 +258,9 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
     private void scrollToPosition(int direction) {
         switch (direction) {
             case LEFT:
-//                mAdapter1.leftScroll();
                 mRecyclerview1.smoothScrollToPosition(mFirstItemPosition - 6);
-
                 break;
             case RIGHT:
-//                mAdapter1.rightScroll();
                 mRecyclerview1.smoothScrollToPosition(mLastItemPosition + 6);
                 break;
         }

@@ -11,7 +11,7 @@ import com.example.self_service_gate.model.Mine;
 
 public class MineViewModel extends ViewModel {
 
-    public MutableLiveData<Mine> mMineMutableLiveData;
+    public MutableLiveData<Login> mMineMutableLiveData;
     private MineRepository mRepository;
 
     public MineViewModel(MineRepository repository) {

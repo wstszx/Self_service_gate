@@ -27,9 +27,6 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
     private final Context mContext;
     private Listener listener;
 
-    public void setPage(int page) {
-        this.page = page;
-    }
 
     private int page = 1;
 
@@ -39,10 +36,6 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
         mContext = context;
     }
 
-//    @Override
-//    public int getItemCount() {
-//        return Math.min(getData().size(), 6);
-//    }
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, StaffMember.MemberHelperListBean bean) {
@@ -104,13 +97,7 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
 //    }
 
 
-    public List<StaffMember.MemberHelperListBean> getList() {
-        return getData();
-    }
 
-    public void updateList(List<StaffMember.MemberHelperListBean> listSource) {
-        setList(listSource);
-    }
 
     @Override
     public boolean onLongClick(View view) {
@@ -119,19 +106,5 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
         view.startDrag(data, shadowBuilder, view, 0);
         view.setVisibility(View.INVISIBLE);
         return true;
-    }
-
-    public void leftScroll() {
-        if (page > 1) {
-            page--;
-            notifyDataSetChanged();
-        }
-    }
-
-    public void rightScroll() {
-        if (page * 6 < getData().size()) {
-            page++;
-            notifyDataSetChanged();
-        }
     }
 }

@@ -65,9 +65,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mTvUserAgreement = mBinding.tvUserAgreement;
         MineViewModelFactory mineViewModelFactory = InjectorUtils.provideMineViewModelFactory(requireContext());
         mMineViewModel = new ViewModelProvider(this, mineViewModelFactory).get(MineViewModel.class);
-        mMineViewModel.mMineMutableLiveData.observe(getViewLifecycleOwner(), new Observer<Mine>() {
+        mMineViewModel.mMineMutableLiveData.observe(getViewLifecycleOwner(), new Observer<Login>() {
             @Override
-            public void onChanged(Mine mine) {
+            public void onChanged(Login mine) {
                 if (mine != null) {
                     String code = mine.getCode();
                     if ("200".equals(code)) {

@@ -28,7 +28,7 @@ public interface ApiService {
     //APP登出
     @FormUrlEncoded
     @POST("dev-api/padLogin/loginOut")
-    Call<BaseResponse> logout();
+    Call<BaseResponse<Login>> logout();
 
     //pad工作人员选择列表
     @GET("dev-api/padMemberChoose/list")

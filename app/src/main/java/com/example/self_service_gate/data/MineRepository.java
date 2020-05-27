@@ -27,8 +27,9 @@ public class MineRepository {
         return instance;
     }
 
-    public void getLoginResult(String username, String password, final MutableLiveData<Login> loginResult) {
-        RetrofitClient.getInstance().getService().login(username, password).enqueue(new Callback<BaseResponse<Login>>() {
+
+    public void getLogoutResult(final MutableLiveData<Login> mineMutableLiveData) {
+        RetrofitClient.getInstance().getService().logout().enqueue(new Callback<BaseResponse<Login>>() {
             @Override
             public void onResponse(@NotNull Call<BaseResponse<Login>> call, @NotNull Response<BaseResponse<Login>> response) {
                 BaseResponse<Login> body = response.body();
@@ -36,7 +37,7 @@ public class MineRepository {
                 if (body != null) {
                     data = body.getData();
                 }
-                loginResult.postValue(data);
+                mineMutableLiveData.postValue(data);
             }
 
             @Override
@@ -44,9 +45,6 @@ public class MineRepository {
 
             }
         });
-    }
-
-    public void getLogoutResult(MutableLiveData<Mine> mineMutableLiveData) {
 
     }
 }

@@ -1,5 +1,7 @@
 package com.example.self_service_gate.data;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.self_service_gate.model.BaseResponse;
@@ -41,7 +43,7 @@ public class LoginRepository {
 
             @Override
             public void onFailure(Call<BaseResponse<Login>> call, Throwable t) {
-
+                Log.d("mylog", "onFailure: " + t.getMessage());
             }
         });
     }

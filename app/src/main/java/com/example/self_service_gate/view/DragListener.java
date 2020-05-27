@@ -5,13 +5,10 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.self_service_gate.R;
 import com.example.self_service_gate.adapter.CandidateAdapter;
 import com.example.self_service_gate.adapter.SelectedStaffAdapter;
 import com.example.self_service_gate.model.StaffMember;
-
-import java.util.List;
 
 public class DragListener implements View.OnDragListener {
     private boolean isDropped = false;
@@ -58,10 +55,10 @@ public class DragListener implements View.OnDragListener {
                             CandidateAdapter adapterSource = (CandidateAdapter) source.getAdapter();
                             int positionSource = (int) viewSource.getTag();
                             StaffMember.MemberHelperListBean list = adapterSource.getData().get(positionSource);
-                            adapterSource.remove(positionSource);
                             StaffMember.PostHelperListBean bean = castBottomToTop(list);
                             boolean type1 = judgmentType(target.getAdapter());
                             if (!type1) {
+                                adapterSource.remove(positionSource);
                                 SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
                                 if (adapterTarget != null) {
                                     if (positionTarget >= 0) {
@@ -77,12 +74,11 @@ public class DragListener implements View.OnDragListener {
                             StaffMember.PostHelperListBean list = adapterSource.getData().get(positionSource);
                             boolean type1 = judgmentType(target.getAdapter());
                             if (type1) {
-                                adapterSource.remove(positionSource);
                                 CandidateAdapter adapterTarget = (CandidateAdapter) target.getAdapter();
                                 if (adapterTarget != null) {
                                     StaffMember.MemberHelperListBean bean = castTopToBottom(list);
                                     if (positionTarget >= 0) {
-                                        adapterTarget.setData(positionTarget, bean);
+                                        adapterTarget.addData(positionTarget, bean);
                                     } else {
                                         adapterTarget.addData(bean);
                                     }
@@ -91,31 +87,13 @@ public class DragListener implements View.OnDragListener {
                                 SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
                                 if (adapterTarget != null) {
                                     if (positionTarget >= 0) {
+                                        StaffMember.PostHelperListBean item = adapterTarget.getItem(positionTarget);
+                                        adapterTarget.setData(positionSource, item);
                                         adapterTarget.setData(positionTarget, list);
-                                    } else {
-                                        adapterTarget.addData(list);
                                     }
                                 }
                             }
                         }
-
-//                        int positionSource = (int) viewSource.getTag();
-//
-//                        StaffMember.MemberHelperListBean list = adapterSource.getData().get(positionSource);
-//
-//                        adapterSource.remove(positionSource);
-//                        StaffMember.PostHelperListBean bean = castBottomToTop(list);
-//
-//                        SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
-//
-//                        if (adapterTarget != null) {
-//                            if (positionTarget >= 0) {
-//                                adapterTarget.setData(positionTarget, bean);
-//                            } else {
-//                                adapterTarget.addData(bean);
-//                            }
-//                        }
-
                     }
                     break;
             }
