@@ -49,4 +49,5 @@ public interface ApiService {
     Call<BaseResponse> confirmUnInduction(@Field("areaNumber") String areaNumber);
 
 
+    Call<BaseResponse<Login>> agreeGuidelines();
 }

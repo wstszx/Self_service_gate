@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
@@ -12,19 +13,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.self_service_gate.R;
-import com.example.self_service_gate.databinding.FragmentLoginBinding;
 import com.example.self_service_gate.databinding.FragmentMineBinding;
 import com.example.self_service_gate.model.Login;
-import com.example.self_service_gate.model.Mine;
 import com.example.self_service_gate.utils.InjectorUtils;
-import com.example.self_service_gate.viewmodels.LoginViewModel;
-import com.example.self_service_gate.viewmodels.LoginViewModelFactory;
 import com.example.self_service_gate.viewmodels.MineViewModel;
 import com.example.self_service_gate.viewmodels.MineViewModelFactory;
 
@@ -38,6 +33,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     private TextView mTvCheckUpdate;
     private TextView mTvUserAgreement;
     private MineViewModel mMineViewModel;
+    private Fragment currentFragment = new Fragment();
+    private CheckUpdatesFragment mCheckUpdatesFragment;
+    private UserAgreementFragment mUserAgreementFragment;
+
 
     public MineFragment() {
         // Required empty public constructor
@@ -63,6 +62,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mTvLogOff = mBinding.tvLogOff;
         mTvCheckUpdate = mBinding.tvCheckUpdate;
         mTvUserAgreement = mBinding.tvUserAgreement;
+        mCheckUpdatesFragment = CheckUpdatesFragment.newInstance();
+        mUserAgreementFragment = UserAgreementFragment.newInstance();
+        switchFragment(mCheckUpdatesFragment).commit();
         MineViewModelFactory mineViewModelFactory = InjectorUtils.provideMineViewModelFactory(requireContext());
         mMineViewModel = new ViewModelProvider(this, mineViewModelFactory).get(MineViewModel.class);
         mMineViewModel.mMineMutableLiveData.observe(getViewLifecycleOwner(), new Observer<Login>() {
@@ -81,6 +83,21 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         return mBinding.getRoot();
     }
 
+    private FragmentTransaction switchFragment(Fragment targetFragment) {
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        if (!targetFragment.isAdded()) {
+            if (currentFragment != null) {
+                transaction.hide(currentFragment);
+            }
+            transaction.add(R.id.framelayout, targetFragment, targetFragment.getClass().getName());
+        } else {
+            transaction.hide(currentFragment)
+                    .show(targetFragment);
+        }
+        currentFragment = targetFragment;
+        return transaction;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -94,9 +111,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         if (v == mTvLogOff) {
             getLogout();
         } else if (v == mTvCheckUpdate) {
-
+            switchFragment(mCheckUpdatesFragment).commit();
         } else if (v == mTvUserAgreement) {
-
+            switchFragment(mUserAgreementFragment).commit();
         }
     }
 
