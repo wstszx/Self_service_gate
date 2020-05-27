@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class SelectedStaffAdapter extends BaseQuickAdapter<StaffMember.PostHelperListBean, BaseViewHolder> implements View.OnTouchListener {
+public class SelectedStaffAdapter extends BaseQuickAdapter<StaffMember.PostHelperListBean, BaseViewHolder> implements View.OnTouchListener, View.OnLongClickListener {
 
     private final Context mContext;
     private Listener listener;
@@ -46,7 +46,8 @@ public class SelectedStaffAdapter extends BaseQuickAdapter<StaffMember.PostHelpe
                     .setText(R.id.tv_title_3, userTitle);
             Glide.with(mContext).load(userImg).placeholder(R.drawable.personnel_select_defaut).into(((ImageView) baseViewHolder.getView(R.id.iv_avatar)));
             baseViewHolder.getView(R.id.constraint).setTag(baseViewHolder.getAdapterPosition());
-            baseViewHolder.getView(R.id.constraint).setOnTouchListener(this);
+            baseViewHolder.getView(R.id.constraint).setOnLongClickListener(this);
+//            baseViewHolder.getView(R.id.constraint).setOnTouchListener(this);
             baseViewHolder.getView(R.id.constraint).setOnDragListener(new DragListener(null));
 
         }
@@ -82,5 +83,14 @@ public class SelectedStaffAdapter extends BaseQuickAdapter<StaffMember.PostHelpe
 //            Log.e("ListAdapter", "Listener wasn't initialized!");
 //            return null;
 //        }
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        ClipData data = ClipData.newPlainText("", "");
+        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+        view.startDrag(data, shadowBuilder, view, 0);
+        view.setVisibility(View.INVISIBLE);
+        return true;
     }
 }

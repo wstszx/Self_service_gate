@@ -36,13 +36,15 @@ public interface ApiService {
 
     //pad获取工作时长列表
     @GET("dev-api/padMemberChoose/getWorkTimeList")
-    Call<BaseResponse> getWorkingHoursList(@Field("areaNumber") String areaNumber);
+    Call<BaseResponse> getWorkingHoursList(@Query("areaNumber") String areaNumber);
 
     //pad确认上岗
+    @FormUrlEncoded
     @POST("dev-api/padMemberChoose/confirmWork")
     Call<BaseResponse> confirmInduction(@Body RequestBody body);
 
     //pad确认下岗
+    @FormUrlEncoded
     @POST("dev-api/padMemberChoose/confirmUnWork")
     Call<BaseResponse> confirmUnInduction(@Field("areaNumber") String areaNumber);
 

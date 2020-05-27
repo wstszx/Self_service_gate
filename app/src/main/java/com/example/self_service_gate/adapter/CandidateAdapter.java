@@ -6,6 +6,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -20,16 +22,27 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperListBean, BaseViewHolder> implements View.OnTouchListener {
+public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperListBean, BaseViewHolder> implements View.OnLongClickListener {
 
     private final Context mContext;
     private Listener listener;
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    private int page = 1;
 
 
     public CandidateAdapter(Context context, int layoutResId) {
         super(layoutResId);
         mContext = context;
     }
+
+//    @Override
+//    public int getItemCount() {
+//        return Math.min(getData().size(), 6);
+//    }
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, StaffMember.MemberHelperListBean bean) {
@@ -43,7 +56,7 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
                     .setText(R.id.tv_title_3, userTitle);
             Glide.with(mContext).load(userImg).placeholder(R.drawable.personnel_select_defaut).into(((ImageView) baseViewHolder.getView(R.id.iv_avatar)));
             baseViewHolder.getView(R.id.constraint).setTag(baseViewHolder.getAdapterPosition());
-            baseViewHolder.getView(R.id.constraint).setOnTouchListener(this);
+            baseViewHolder.getView(R.id.constraint).setOnLongClickListener(this);
             baseViewHolder.getView(R.id.constraint).setOnDragListener(new DragListener(null));
 
         }
@@ -75,20 +88,21 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
 //        }
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            ClipData data = ClipData.newPlainText("", "");
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                v.startDragAndDrop(data, shadowBuilder, v, 0);
-            } else {
-                v.startDrag(data, shadowBuilder, v, 0);
-            }
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onTouch(View v, MotionEvent event) {
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            ClipData data = ClipData.newPlainText("", "");
+//            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//                v.startDragAndDrop(data, shadowBuilder, v, 0);
+//            } else {
+//                v.startDrag(data, shadowBuilder, v, 0);
+//            }
+//            return true;
+//        }
+//        return false;
+//    }
+
 
     public List<StaffMember.MemberHelperListBean> getList() {
         return getData();
@@ -96,5 +110,28 @@ public class CandidateAdapter extends BaseQuickAdapter<StaffMember.MemberHelperL
 
     public void updateList(List<StaffMember.MemberHelperListBean> listSource) {
         setList(listSource);
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        ClipData data = ClipData.newPlainText("", "");
+        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+        view.startDrag(data, shadowBuilder, view, 0);
+        view.setVisibility(View.INVISIBLE);
+        return true;
+    }
+
+    public void leftScroll() {
+        if (page > 1) {
+            page--;
+            notifyDataSetChanged();
+        }
+    }
+
+    public void rightScroll() {
+        if (page * 6 < getData().size()) {
+            page++;
+            notifyDataSetChanged();
+        }
     }
 }

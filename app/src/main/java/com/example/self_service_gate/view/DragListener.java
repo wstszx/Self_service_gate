@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.self_service_gate.R;
 import com.example.self_service_gate.adapter.CandidateAdapter;
 import com.example.self_service_gate.adapter.SelectedStaffAdapter;
@@ -52,24 +53,68 @@ public class DragListener implements View.OnDragListener {
 
                     if (viewSource != null) {
                         RecyclerView source = (RecyclerView) viewSource.getParent();
-
-                        CandidateAdapter adapterSource = (CandidateAdapter) source.getAdapter();
-                        int positionSource = (int) viewSource.getTag();
-
-                        StaffMember.MemberHelperListBean list = adapterSource.getData().get(positionSource);
-
-                        adapterSource.remove(positionSource);
-                        StaffMember.PostHelperListBean bean = castBottomToTop(list);
-
-                        SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
-
-                        if (adapterTarget != null) {
-                            if (positionTarget >= 0) {
-                                adapterTarget.setData(positionTarget, bean);
+                        boolean type = judgmentType(source.getAdapter());
+                        if (type) {
+                            CandidateAdapter adapterSource = (CandidateAdapter) source.getAdapter();
+                            int positionSource = (int) viewSource.getTag();
+                            StaffMember.MemberHelperListBean list = adapterSource.getData().get(positionSource);
+                            adapterSource.remove(positionSource);
+                            StaffMember.PostHelperListBean bean = castBottomToTop(list);
+                            boolean type1 = judgmentType(target.getAdapter());
+                            if (!type1) {
+                                SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
+                                if (adapterTarget != null) {
+                                    if (positionTarget >= 0) {
+                                        adapterTarget.setData(positionTarget, bean);
+                                    } else {
+                                        adapterTarget.addData(bean);
+                                    }
+                                }
+                            }
+                        } else {
+                            SelectedStaffAdapter adapterSource = ((SelectedStaffAdapter) source.getAdapter());
+                            int positionSource = (int) viewSource.getTag();
+                            StaffMember.PostHelperListBean list = adapterSource.getData().get(positionSource);
+                            boolean type1 = judgmentType(target.getAdapter());
+                            if (type1) {
+                                adapterSource.remove(positionSource);
+                                CandidateAdapter adapterTarget = (CandidateAdapter) target.getAdapter();
+                                if (adapterTarget != null) {
+                                    StaffMember.MemberHelperListBean bean = castTopToBottom(list);
+                                    if (positionTarget >= 0) {
+                                        adapterTarget.setData(positionTarget, bean);
+                                    } else {
+                                        adapterTarget.addData(bean);
+                                    }
+                                }
                             } else {
-                                adapterTarget.addData(bean);
+                                SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
+                                if (adapterTarget != null) {
+                                    if (positionTarget >= 0) {
+                                        adapterTarget.setData(positionTarget, list);
+                                    } else {
+                                        adapterTarget.addData(list);
+                                    }
+                                }
                             }
                         }
+
+//                        int positionSource = (int) viewSource.getTag();
+//
+//                        StaffMember.MemberHelperListBean list = adapterSource.getData().get(positionSource);
+//
+//                        adapterSource.remove(positionSource);
+//                        StaffMember.PostHelperListBean bean = castBottomToTop(list);
+//
+//                        SelectedStaffAdapter adapterTarget = (SelectedStaffAdapter) target.getAdapter();
+//
+//                        if (adapterTarget != null) {
+//                            if (positionTarget >= 0) {
+//                                adapterTarget.setData(positionTarget, bean);
+//                            } else {
+//                                adapterTarget.addData(bean);
+//                            }
+//                        }
 
                     }
                     break;
@@ -82,9 +127,20 @@ public class DragListener implements View.OnDragListener {
         return true;
     }
 
+    private boolean judgmentType(RecyclerView.Adapter adapter) {
+        return adapter instanceof CandidateAdapter;
+    }
+
     private StaffMember.PostHelperListBean castBottomToTop(StaffMember.MemberHelperListBean list) {
         StaffMember.PostHelperListBean postHelperListBean = new StaffMember.PostHelperListBean();
         postHelperListBean.setPostName(list.getUserName());
+        postHelperListBean.setUserTitle(list.getUserTitle());
+        return postHelperListBean;
+    }
+
+    private StaffMember.MemberHelperListBean castTopToBottom(StaffMember.PostHelperListBean list) {
+        StaffMember.MemberHelperListBean postHelperListBean = new StaffMember.MemberHelperListBean();
+        postHelperListBean.setUserName(list.getUserName());
         postHelperListBean.setUserTitle(list.getUserTitle());
         return postHelperListBean;
     }

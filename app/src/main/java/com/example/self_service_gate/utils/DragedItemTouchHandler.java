@@ -1,7 +1,9 @@
 package com.example.self_service_gate.utils;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -101,11 +103,20 @@ public class DragedItemTouchHandler extends ItemTouchHelper.Callback {
         if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
             // 拖拽状态
             viewHolder.itemView.setBackgroundColor(Color.BLUE);
+            Bitmap bitmap = view2bitmap(viewHolder.itemView);
         } else if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             // 滑动删除状态
             viewHolder.itemView.setBackgroundColor(Color.RED);
         }
         super.onSelectedChanged(viewHolder, actionState);
+    }
+
+    public Bitmap view2bitmap(View view) {
+        int width = view.getMeasuredWidth();
+        int height = view.getMeasuredHeight();
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        view.draw(new Canvas(bitmap));
+        return bitmap;
     }
 
     /**

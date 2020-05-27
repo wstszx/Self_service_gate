@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.3.0-alpha06"
+    def nav_version = "2.3.0-beta01"
     def room_version = "2.2.5"
     def glide_version = '4.11.0'
     def lifecycle_version = "2.2.0-alpha02"
@@ -72,6 +72,8 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
 //    WorkManager
     implementation "androidx.work:work-runtime:$work_version"
+    
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
     
     
 }
