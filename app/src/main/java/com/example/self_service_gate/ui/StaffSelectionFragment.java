@@ -3,11 +3,13 @@ package com.example.self_service_gate.ui;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ConvertUtils;
 import com.bumptech.glide.Glide;
 import com.example.self_service_gate.R;
 import com.example.self_service_gate.adapter.CandidateAdapter;
@@ -73,6 +76,9 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
     private StaffSelectionViewModel mViewModel;
     private int mLastItemPosition = 5;
     private int mFirstItemPosition;
+    private View mScrollbar;
+
+    private float barTouchedLastY;
 
     public StaffSelectionFragment() {
         // Required empty public constructor
@@ -158,6 +164,7 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
         mTvAdjustmentStaff = mBinding.tvAdjustmentStaff;
         mTvConfirmToWork = mBinding.tvConfirmToWork;
         mTvConfirmLaidOff = mBinding.tvConfirmLaidOff;
+        mScrollbar = mBinding.scrollbar;
 
         mIvLeft.setOnClickListener(this);
         mIvRight.setOnClickListener(this);
@@ -176,19 +183,12 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
         //设置添加,移除动画
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
         mRecyclerview1.setItemAnimator(new DefaultItemAnimator());
-//        new LinearLayoutManager(getContext()).findFirstVisibleItemPosition()
-//        DragedItemTouchHandler touchHandler = new DragedItemTouchHandler(mAdapter);
-//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(touchHandler);
-//        itemTouchHelper.attachToRecyclerView(mRecyclerview);
 
 //        DragedItemTouchHandler touchHandler1 = new DragedItemTouchHandler(mAdapter1);
 //        ItemTouchHelper itemTouchHelper1 = new ItemTouchHelper(touchHandler1);
 //        itemTouchHelper1.attachToRecyclerView(mRecyclerview1);
         mRecyclerview.addItemDecoration(new GridSpacingItemDecoration(5, 20, true));
         mRecyclerview1.addItemDecoration(new SpacesItemDecoration(30));
-//        mRecyclerview.setOnDragListener(mAdapter.getDragInstance());
-//        mRecyclerview1.setOnDragListener(mAdapter1.getDragInstance());
-//        new LinearSnapHelper().attachToRecyclerView(mRecyclerview1);
         mRecyclerview1.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -206,6 +206,76 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
             }
         });
 
+        mRecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                changeBarPosition();
+            }
+        });
+        mScrollbar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+//                        barTouchedLastY是触摸点相对于父容器的垂直方向距离
+                        barTouchedLastY = event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+//                        dy是滑动的距离
+                        float dY = event.getRawY() - barTouchedLastY;
+                        moveListView(dY);
+                        barTouchedLastY = event.getRawY();
+
+                        //上下边界值
+                        if (mScrollbar.getY() + dY + mScrollbar.getMeasuredHeight() >= mBinding.constraint2.getHeight()) {
+                            //到底了
+                            mScrollbar.setY(mBinding.constraint2.getHeight() - mScrollbar.getMeasuredHeight());
+                        } else if (mScrollbar.getY() + dY <= 0) {
+                            //到顶了
+                            mScrollbar.setY(0);
+                        } else {
+                            mScrollbar.setY(mScrollbar.getY() + dY);
+                        }
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                    case MotionEvent.ACTION_UP:
+                        break;
+                }
+
+                return true;
+            }
+        });
+    }
+
+    private void moveListView(float dY) {
+
+        //列表总长度
+        int verticalScrollRange = mRecyclerview.computeVerticalScrollRange();
+        //可见区域长度
+        int verticalScrollExtent = mRecyclerview.computeVerticalScrollExtent();
+        //向上滑动的大概距离
+        int verticalScrollOffset = mRecyclerview.computeVerticalScrollOffset();
+
+        int listMovableHeight = verticalScrollRange - verticalScrollExtent;
+        int barMovableHeight = verticalScrollExtent - mScrollbar.getHeight();
+
+        mRecyclerview.scrollBy(0, (int) (1.0f * listMovableHeight / barMovableHeight * dY));
+    }
+
+
+    private void changeBarPosition() {
+        //列表总长度
+        int verticalScrollRange = mRecyclerview.computeVerticalScrollRange();
+        //可见区域长度
+        int verticalScrollExtent = mRecyclerview.computeVerticalScrollExtent();
+        //向上滑动的大概距离
+        int verticalScrollOffset = mRecyclerview.computeVerticalScrollOffset();
+
+        int listMovableHeight = verticalScrollRange - verticalScrollExtent;
+        int barMovableHeight = verticalScrollExtent - mScrollbar.getHeight() - ConvertUtils.dp2px(42);
+        mScrollbar.setY(1.0f * barMovableHeight / listMovableHeight * verticalScrollOffset);
+
     }
 
     @Override
@@ -215,7 +285,8 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
         } else if (v == mIvRight) {
             scrollToPosition(RIGHT);
         } else if (v == mTvAdjustmentStaff) {
-
+            mTvConfirmToWork.setEnabled(false);
+            mTvConfirmLaidOff.setEnabled(false);
         } else if (v == mTvConfirmToWork) {
             confirmToWork();
         } else if (v == mTvConfirmLaidOff) {
@@ -258,7 +329,7 @@ public class StaffSelectionFragment extends Fragment implements View.OnClickList
     private void scrollToPosition(int direction) {
         switch (direction) {
             case LEFT:
-                mRecyclerview1.smoothScrollToPosition(mFirstItemPosition - 6);
+                mRecyclerview1.smoothScrollToPosition(Math.max(mFirstItemPosition - 6, 0));
                 break;
             case RIGHT:
                 mRecyclerview1.smoothScrollToPosition(mLastItemPosition + 6);

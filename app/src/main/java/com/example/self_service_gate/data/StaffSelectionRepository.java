@@ -33,7 +33,7 @@ public class StaffSelectionRepository {
 //        底下列表
         StaffMember staffMember = new StaffMember();
         List<StaffMember.MemberHelperListBean> memberHelperListBeanList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             StaffMember.MemberHelperListBean memberHelperListBean = new StaffMember.MemberHelperListBean();
             memberHelperListBean.setUserId(i);
             memberHelperListBean.setUserName("底下用户名" + i);
@@ -43,7 +43,7 @@ public class StaffSelectionRepository {
         staffMember.setMemberHelperList(memberHelperListBeanList);
 //      上面列表
         List<StaffMember.PostHelperListBean> postHelperListBeans = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             StaffMember.PostHelperListBean postHelperListBean = new StaffMember.PostHelperListBean();
             postHelperListBean.setUserId(i);
             postHelperListBean.setUserName("上面用户名" + i);

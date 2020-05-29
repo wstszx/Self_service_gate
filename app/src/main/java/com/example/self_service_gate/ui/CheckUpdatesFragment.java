@@ -1,18 +1,15 @@
 package com.example.self_service_gate.ui;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.self_service_gate.R;
 import com.example.self_service_gate.databinding.FragmentCheckUpdatesBinding;
-import com.example.self_service_gate.databinding.FragmentUserAgreementBinding;
 import com.example.self_service_gate.model.Login;
 import com.example.self_service_gate.utils.InjectorUtils;
 import com.example.self_service_gate.viewmodels.CheckUpdateViewModel;
