@@ -60,7 +60,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 if (login != null) {
                     String code = login.getCode();
                     if ("200".equals(code)) {
-                        requestPermission();
+                        NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
+//                        requestPermission();
                     } else {
                         ToastUtils.showShort("登录失败");
                     }
@@ -70,17 +71,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         return mFragmentLoginBinding.getRoot();
     }
 
-    private void requestPermission() {
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-//                ToastUtils.showShort("禁止拍照权限会导致无法完成人脸身份验证");
-                requestPermissions(new String[]{Manifest.permission.CAMERA},
-                        MY_PERMISSIONS_REQUEST_CAMERA);
-            }
-        } else {
-            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
-        }
-    }
+//    private void requestPermission() {
+//        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+////                ToastUtils.showShort("禁止拍照权限会导致无法完成人脸身份验证");
+//                requestPermissions(new String[]{Manifest.permission.CAMERA},
+//                        MY_PERMISSIONS_REQUEST_CAMERA);
+//            }
+//        } else {
+//            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
+//        }
+//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -91,25 +92,25 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == mFragmentLoginBinding.tvLogin) {
-//            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
-            checkPermission();
+            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
+//            checkPermission();
 
 //            login();
         }
     }
 
-    private void checkPermission() {
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-                ToastUtils.showShort("禁止拍照权限会导致无法完成人脸身份验证");
-            } else {
-                requestPermissions(new String[]{Manifest.permission.CAMERA},
-                        MY_PERMISSIONS_REQUEST_CAMERA);
-            }
-        } else {
-            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
-        }
-    }
+//    private void checkPermission() {
+//        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//            if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+//                ToastUtils.showShort("禁止拍照权限会导致无法完成人脸身份验证");
+//            } else {
+//                requestPermissions(new String[]{Manifest.permission.CAMERA},
+//                        MY_PERMISSIONS_REQUEST_CAMERA);
+//            }
+//        } else {
+//            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
+//        }
+//    }
 
     private void login() {
         String username = mEtUsername.getText().toString();
@@ -121,14 +122,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         mLoginViewModel.login(username, password);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (MY_PERMISSIONS_REQUEST_CAMERA == requestCode) {
-            if (grantResults.length > 0 &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
-            }
-        }
-
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        if (MY_PERMISSIONS_REQUEST_CAMERA == requestCode) {
+//            if (grantResults.length > 0 &&
+//                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.faceRecognitionFragment);
+//            }
+//        }
+//
+//    }
 }

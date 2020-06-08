@@ -36,10 +36,11 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         try {
             mCamera.setPreviewDisplay(holder);
             mCamera.startPreview();
+            startFaceDetection();
+
         } catch (IOException e) {
             Log.d("mylog", "Error setting camera preview: " + e.getMessage());
         }
-        startFaceDetection();
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
@@ -69,11 +70,12 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         try {
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
+            startFaceDetection();
+
 
         } catch (Exception e) {
             Log.d("mylog", "Error starting camera preview: " + e.getMessage());
         }
-        startFaceDetection();
 
     }
 

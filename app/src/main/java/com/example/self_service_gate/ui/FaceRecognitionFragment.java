@@ -63,22 +63,18 @@ public class FaceRecognitionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     private void checkPermission() {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-//                NavHostFragment.findNavController(FaceRecognitionFragment.this).navigateUp();
                 ToastUtils.showShort("禁止拍照权限会导致无法完成人脸身份验证");
+                NavHostFragment.findNavController(FaceRecognitionFragment.this).navigateUp();
             } else {
                 requestPermissions(new String[]{Manifest.permission.CAMERA},
                         MY_PERMISSIONS_REQUEST_CAMERA);
             }
-        } else {
-            mCamera = getCameraInstance();
-            CameraPreview cameraPreview = new CameraPreview(getContext(), mCamera);
-            mFrameLayout.addView(cameraPreview);
-            mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
         }
     }
 
@@ -120,6 +116,10 @@ public class FaceRecognitionFragment extends Fragment {
                 mCamera.takePicture(null, null, mPicture);
             }
         });
+        mCamera = getCameraInstance();
+        CameraPreview cameraPreview = new CameraPreview(getContext(), mCamera);
+        mFrameLayout.addView(cameraPreview);
+        mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
         checkPermission();
 //        getOutputDirectory();
     }
@@ -161,17 +161,15 @@ public class FaceRecognitionFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (MY_PERMISSIONS_REQUEST_CAMERA == requestCode) {
-            if (grantResults.length > 0 &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                mCamera = getCameraInstance();
-            } else {
+            if (grantResults.length <= 0 ||
+                    grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 NavHostFragment.findNavController(FaceRecognitionFragment.this).navigateUp();
             }
         }
 
     }
 
-    static class MyFaceDetectionListener implements Camera.FaceDetectionListener {
+     static class MyFaceDetectionListener implements Camera.FaceDetectionListener {
 
         @Override
         public void onFaceDetection(Camera.Face[] faces, Camera camera) {
