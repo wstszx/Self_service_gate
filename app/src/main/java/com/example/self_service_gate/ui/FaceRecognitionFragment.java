@@ -9,14 +9,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -48,6 +53,11 @@ public class FaceRecognitionFragment extends Fragment {
     private Camera mCamera;
     private AutoFitTextureView mTexture;
     private FrameLayout mFrameLayout;
+    private Animation mAnimation;
+    private ConstraintLayout mConstraint1;
+    private ConstraintLayout mConstraint2;
+    private ConstraintLayout mConstraint3;
+    private ImageView mIv3;
 
     public FaceRecognitionFragment() {
         // Required empty public constructor
@@ -75,6 +85,11 @@ public class FaceRecognitionFragment extends Fragment {
                 requestPermissions(new String[]{Manifest.permission.CAMERA},
                         MY_PERMISSIONS_REQUEST_CAMERA);
             }
+        } else {
+            mCamera = getCameraInstance();
+            CameraPreview cameraPreview = new CameraPreview(getContext(), mCamera);
+            mFrameLayout.addView(cameraPreview);
+            mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
         }
     }
 
@@ -108,19 +123,26 @@ public class FaceRecognitionFragment extends Fragment {
     }
 
     private void initView() {
+
         mFrameLayout = mBinding.framelayout;
-        Button btTakePhoto = mBinding.btTakePhoto;
+        mConstraint1 = mBinding.constraint1;
+        mConstraint2 = mBinding.constraint2;
+        mConstraint3 = mBinding.constraint3;
+        mIv3 = mBinding.iv3;
+        mAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_anim);
+        LinearInterpolator interpolator = new LinearInterpolator();
+        mAnimation.setInterpolator(interpolator);
+        mIv3.setAnimation(mAnimation);
+        mIv3.startAnimation(mAnimation);
+        ImageView btTakePhoto = mBinding.btTakePhoto;
         btTakePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mCamera.takePicture(null, null, mPicture);
             }
         });
-        mCamera = getCameraInstance();
-        CameraPreview cameraPreview = new CameraPreview(getContext(), mCamera);
-        mFrameLayout.addView(cameraPreview);
-        mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
         checkPermission();
+
 //        getOutputDirectory();
     }
 
@@ -164,6 +186,11 @@ public class FaceRecognitionFragment extends Fragment {
             if (grantResults.length <= 0 ||
                     grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 NavHostFragment.findNavController(FaceRecognitionFragment.this).navigateUp();
+            } else {
+                mCamera = getCameraInstance();
+                CameraPreview cameraPreview = new CameraPreview(getContext(), mCamera);
+                mFrameLayout.addView(cameraPreview);
+                mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
             }
         }
 
