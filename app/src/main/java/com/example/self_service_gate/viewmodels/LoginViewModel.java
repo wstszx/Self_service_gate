@@ -1,7 +1,6 @@
 package com.example.self_service_gate.viewmodels;
 
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 

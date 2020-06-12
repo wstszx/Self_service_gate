@@ -12,37 +12,22 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.camera.core.CameraSelector;
-import androidx.camera.core.Preview;
-import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.blankj.utilcode.util.TouchUtils;
 import com.example.self_service_gate.R;
 import com.example.self_service_gate.databinding.FragmentFaceRecognitionBinding;
 import com.example.self_service_gate.view.AutoFitTextureView;
 import com.example.self_service_gate.view.CameraPreview;
-import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-
-import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
 
 public class FaceRecognitionFragment extends Fragment {
@@ -150,22 +135,22 @@ public class FaceRecognitionFragment extends Fragment {
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
-
-            File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
-            if (pictureFile == null) {
-                Log.d("mylog", "Error creating media file, check storage permissions");
-                return;
-            }
-
-            try {
-                FileOutputStream fos = new FileOutputStream(pictureFile);
-                fos.write(data);
-                fos.close();
-            } catch (FileNotFoundException e) {
-                Log.d("mylog", "File not found: " + e.getMessage());
-            } catch (IOException e) {
-                Log.d("mylog", "Error accessing file: " + e.getMessage());
-            }
+            mConstraint3.setVisibility(View.VISIBLE);
+//            File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+//            if (pictureFile == null) {
+//                Log.d("mylog", "Error creating media file, check storage permissions");
+//                return;
+//            }
+//
+//            try {
+//                FileOutputStream fos = new FileOutputStream(pictureFile);
+//                fos.write(data);
+//                fos.close();
+//            } catch (FileNotFoundException e) {
+//                Log.d("mylog", "File not found: " + e.getMessage());
+//            } catch (IOException e) {
+//                Log.d("mylog", "Error accessing file: " + e.getMessage());
+//            }
         }
     };
 

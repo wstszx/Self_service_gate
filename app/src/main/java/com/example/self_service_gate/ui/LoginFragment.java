@@ -2,6 +2,7 @@ package com.example.self_service_gate.ui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -70,6 +71,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         });
         return mFragmentLoginBinding.getRoot();
     }
+
 
 //    private void requestPermission() {
 //        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
